@@ -22,10 +22,14 @@ class ViewController: UIViewController {
     @IBAction func keyPressed(_ sender: UIButton) {
         guard let title = sender.title(for: .normal) else { return }
         print("Start")
-        sender.alpha = 0.5
+        UIView.animate(withDuration: 0.2) {
+            sender.alpha = 0.5
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             print("End")
-            sender.alpha = 1.0
+            UIView.animate(withDuration: 0.2) {
+                sender.alpha = 1.0                    
+            }
         }
         playSound(with: title)
     }
